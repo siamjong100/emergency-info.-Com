@@ -1,17 +1,24 @@
 // ডিফল্ট সদস্যদের লিস্ট
 let members = JSON.parse(localStorage.getItem("members")) || [
-  { name: "ছেনেহ", phone: "+8801892479077" },
-  { name: "হামজা", phone: "+8801316258072" },
-  { name: "নূর", phone: "+8801644796912" },
-  { name: "জাহিন", phone: "+8801540665876" },
-  { name: "সজিব", phone: "+8801897520270" },
-  { name: "মুক্তি", phone: "+8801630537613" },
+  { name: "ছেনেহ",  phone: "+8801892479077" },
+  { name: "হামজা",  phone: "+8801316258072" },
+  { name: "নূর",    phone: "+8801644796912" },
+  { name: "জাহিন",  phone: "+8801540665876" },
+  { name: "সজিব",  phone: "+8801897520270" },
+  { name: "মুক্তি",   phone: "+8801630537613" },
   { name: "মাহান্নাত", phone: "+8801811981674" },
-  { name: "দিহাম", phone: "+8801611433833" },
-  { name: "সাদমান ", phone: "+88013774882" }
+  { name: "দিহাম",   phone: "+8801611433833" },
+  { name: "সাদমান",  phone: "+88013774882" }
 ];
 
-let hotelData = JSON.parse(localStorage.getItem("hotelData")) || {};
+// ডিফল্ট হোটেল তথ্য
+let hotelData = JSON.parse(localStorage.getItem("hotelData")) || {
+  name: "Hotel Kuakata Palace",
+  phone: "+8801818523491",
+  website: "",
+  map: "https://maps.app.goo.gl/gqdThqDkEjfkSEkr5"
+};
+
 let noteData = localStorage.getItem("noteData") || "";
 
 function renderMembers() {
@@ -60,8 +67,12 @@ function showHotel() {
     document.getElementById("hotelInfo").innerHTML = `
       <b>🏨 হোটেল:</b> ${hotelData.name || '---'} <br>
       <b>📞 ফোন:</b> ${hotelData.phone || '---'} <br>
-      <b>🌐 ওয়েবসাইট:</b> <a href="${hotelData.website}" target="_blank">${hotelData.website}</a><br>
+      <b>🌐 ওয়েবসাইট:</b> ${hotelData.website ? `<a href="${hotelData.website}" target="_blank">${hotelData.website}</a>` : '---'}<br>
       <b>📍 লোকেশন:</b> <a href="${hotelData.map}" target="_blank">Google Maps</a>
+      <div style="margin-top:10px;">
+        <iframe src="https://www.google.com/maps?q=${encodeURIComponent(hotelData.name)}&output=embed" 
+          width="100%" height="250" style="border:0; border-radius:10px;" allowfullscreen></iframe>
+      </div>
     `;
   }
 }
@@ -82,7 +93,7 @@ function showNote() {
 showNote();
 
 function generateQR() {
-  let info = `🌊 কুয়াকাটা ট্যুর ইনফো\n\n📅 রওনা: ২ তারিখ (শনিবার) রাত\n📅 ফিরবো: ৬ তারিখ (মঙ্গলবার) রাত\n\n`;
+  let info = `🌊 কুয়াকাটা ট্যুর ইনফো\n\n📅 রওনা: ২ তারিখ (মঙ্গলবার) রাত\n📅 ফিরবো: ৬ তারিখ (শনিবার) রাত\n\n`;
 
   members.forEach(m => {
     info += `${m.name}: ${m.phone}\n`;
