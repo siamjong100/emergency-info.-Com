@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>কুয়াকাটা ট্যুর ইনফো</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>🌊 কুয়াকাটা ট্যুর ইমারজেন্সি ইনফো</header>
+
+  <!-- ট্রিপ তারিখ -->
+  <section class="card">
+    <h2>📅 ট্রিপ সময়সূচি</h2>
+    <p><b>রওনা:</b> ২ তারিখ (শনিবার) রাত</p>
+    <p><b>ফিরবো:</b> ৬ তারিখ (মঙ্গলবার) রাত</p>
+  </section>
+
+  <!-- সদস্য লিস্ট -->
+  <section class="card">
+    <h2>📋 টিম মেম্বার লিস্ট</h2>
+    <ul id="memberList"></ul>
+
+    <input type="text" id="name" placeholder="নাম লিখুন">
+    <input type="text" id="phone" placeholder="মোবাইল নাম্বার লিখুন">
+    <button onclick="addMember()">➕ যুক্ত করুন</button>
+  </section>
+
+  <!-- হোটেল তথ্য -->
+  <section class="card">
+    <h2>🏨 হোটেল ইনফরমেশন</h2>
+    <input type="text" id="hotelName" placeholder="হোটেলের নাম">
+    <input type="text" id="hotelPhone" placeholder="হোটেল ফোন নাম্বার">
+    <input type="text" id="hotelWebsite" placeholder="হোটেল ওয়েবসাইট লিঙ্ক">
+    <input type="text" id="hotelMap" placeholder="Google Maps লোকেশন লিঙ্ক">
+    <button onclick="saveHotel()">💾 সেভ করুন</button>
+
+    <div id="hotelInfo"></div>
+  </section>
+
+  <!-- এক্সট্রা ইনফো -->
+  <section class="card">
+    <h2>📝 এক্সট্রা ইনফো</h2>
+    <textarea id="extraNote" placeholder="যেমনঃ ঔষধ নিতে হবে, টাকা রাখতে হবে, ইত্যাদি"></textarea>
+    <button onclick="saveNote()">💾 সেভ করুন</button>
+    <div id="noteShow"></div>
+  </section>
+
+  <!-- QR কোড -->
+  <section class="card">
+    <h2>📲 শেয়ার করার জন্য QR কোড</h2>
+    <button onclick="generateQR()">🔗 QR কোড তৈরি করুন</button>
+    <div id="qrcode"></div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
